@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TresRatlla {
+public class NRatlla {
 
 
     public enum VALOR {BUIDA, CERCLE, CREU}
@@ -24,7 +24,7 @@ public class TresRatlla {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        inicialitzaPartida();
+        inicialitzaPartida(5);
         mostrarTauler(tauler);
 
         while (!partidaAcabada()) {
@@ -38,8 +38,8 @@ public class TresRatlla {
 
     }
 
-    public static void inicialitzaPartida() {
-        tauler = new VALOR[3][3];
+    public static void inicialitzaPartida(int n) {
+        tauler = new VALOR[n][n];
         for (int i = 0; i < tauler.length; i++) {
             for (int j = 0; j < tauler.length; j++) {
                 tauler[i][j] = VALOR.BUIDA;
@@ -115,25 +115,36 @@ public class TresRatlla {
 
     public static RESULTAT comprovaResultat(VALOR[][] t) { //es igual si es t o tauler perque el valor canvia: romeo i julieta exemple
 
-        boolean guanya = false;
-        for (int f=0; f<=2; f++) {
-            if(t[f][0]==t[f][1] && t[f][1] == t[f][2] && t[f][0] !=VALOR.BUIDA) {
-                guanya = true;
-                break;
+        boolean guanyaF = false;
+        for (int f=0; f<=t.length; f++) {
+            boolean b = true;
+            for(int c=0; c<t[f].length-1; c++){
+                b = b && (t[f][c]==t[f][c+1] && t[f][c] != VALOR.BUIDA);
             }
+            guanyaF = b || guanyaF;
         }
-        for (int c =0; c<=2; c++) {
-            if(t[0][c]==t[1][c] && t[1][c] == t[2][c] && t[0][c] !=VALOR.BUIDA) {
-                guanya = true;
-                break;
+        boolean guanyaC = false;
+
+        for (int c=0; c<=t.length-1; c++) {
+            boolean b = true;
+            for(int f=0; f<t[c].length-1; f++){
+                b = b && (t[f][c]==t[f+1][c] && t[f][c] != VALOR.BUIDA);
             }
+            guanyaC = b || guanyaC;
         }
-        if(t[0][0]==t[1][1] && t[1][1] == t[2][2] && t[0][0] !=VALOR.BUIDA) {
-            guanya = true;
+
+        boolean guanyaDD = true;
+        for(int i=0; i<t.length-1; i++ ){
+            guanyaDD = guanyaDD && (t[i][i]==t[i+1][i+1] && t[i][i] != VALOR.BUIDA);
         }
-        if(t[0][2]==t[1][1] && t[1][1] == t[2][2] && t[1][1] !=VALOR.BUIDA) {
-            guanya = true;
+
+        boolean guanyaDA = true;
+        for(int c=0, f=t.length-1; c<t.length-1; c++, f--){
+            guanyaDA = guanyaDA && (t[f][c]==t[f-1][c+1] && t[f][c] != VALOR.BUIDA);
         }
+
+        boolean guanya = guanyaF || guanyaC || guanyaDD || guanyaDA;
+
         if ( guanya && torn == TORN.JUGADOR_A)  {
             return RESULTAT.GUANYADOR_A;
         }else if ( guanya && torn == TORN.JUGADOR_B)  {
