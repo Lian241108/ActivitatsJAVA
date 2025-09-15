@@ -42,5 +42,5 @@ public class Cotxes {
         System.out.printf("%s, %d, %f, %d.\n", marca, matricula, velocitat, numPortes);
     }
 
-    void accelerar(float q){velocitat +=q; }
+    void accelerar(float q){velocitat +=7.8; }
 }
