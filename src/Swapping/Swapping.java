@@ -16,7 +16,7 @@ public class Swapping extends PApplet {
 
     public void setup(){
         p1 = new Proces("P1", color(255,0,0),64);
-        memory = new Memory ( 1024);
+        Memory= new Memory ( 1024);
 
     }
 

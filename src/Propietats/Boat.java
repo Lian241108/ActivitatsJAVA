@@ -2,19 +2,14 @@ package Propietats;
 
 public class Boat extends Prop {
 
-    // Propietats de la classe Boat
     private float length;
     private boolean navigable;
-
-    // Constructor
 
     public Boat(String propID, String address, String city, float length) {
         super(propID, address, city);
         this.length = length;
         this.navigable = true;
     }
-
-    // Getters
 
     public float getLength() {
         return length;
@@ -24,8 +19,6 @@ public class Boat extends Prop {
         return navigable;
     }
 
-
-    // Setters
 
 
     public void setLength(float length) {

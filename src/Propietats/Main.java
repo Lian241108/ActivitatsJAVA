@@ -2,8 +2,6 @@ package Propietats;
 
 public class Main {
 
-    // Propietats estàtiques de la classe Main
-
     public static Owner[] allOwners;
     public static int numOwners;
     public static int numProps;

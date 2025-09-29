@@ -2,21 +2,17 @@ package Propietats;
 
 public class Owner {
 
-    // Propietats de la classe Owner
     private String name;
     private String address;
     private Prop[] props;
     private int numProps;
 
-    // Constructor de la classe Owner
     public Owner(String name, String address) {
         this.name = name;
         this.address = address;
         this.props = new Prop[5];
         this.numProps = 0;
     }
-
-    // Getters
 
     public String getName() {
         return name;
@@ -34,9 +30,6 @@ public class Owner {
         return numProps;
     }
 
-
-    // Setters
-
     public void setName(String name) {
         this.name = name;
     }
@@ -52,8 +45,6 @@ public class Owner {
     public void setNumProps(int numProps) {
         this.numProps = numProps;
     }
-
-    // Altres mètodes
 
     public void addProp(Prop p){
         if(this.numProps<this.props.length) {
@@ -139,6 +130,4 @@ public class Owner {
         }
     }
 
-
 }
-
