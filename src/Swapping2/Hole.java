@@ -17,4 +17,3 @@ public class Hole {
         p5.rect(x + address, y, mida, h);
     }
 }
-

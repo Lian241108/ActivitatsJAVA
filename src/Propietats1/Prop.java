@@ -1,4 +1,4 @@
-package Propietats;
+package Propietats1;
 
 public class Prop {
 

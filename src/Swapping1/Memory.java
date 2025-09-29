@@ -1,6 +1,5 @@
 package Swapping1;
 
-import Swapping.Proces;
 import processing.core.PApplet;
 
 public class Memory {
@@ -8,7 +7,6 @@ public class Memory {
     int mida;
     Proces[] procesos;
     int numProcesos;
-    int freeAddress;
 
     Hole[] holes;
     int numHoles;
@@ -17,7 +15,6 @@ public class Memory {
         this.mida = m;
         procesos = new Proces[100];
         numProcesos = 0;
-        freeAddress = 0;
 
         numHoles = 0;
         holes = new Hole[100];
@@ -32,7 +29,7 @@ public class Memory {
 
     void swapIn(Proces p){
         boolean swapped = false;
-        for(int i=0; i<numHoles; i++){
+        for(int i=0; i<numHoles && !swapped; i++){
             if(holes[i]!=null && holes[i].mida >= p.mida){
                 int espaiRestant = holes[i].mida - p.mida;
                 procesos[numProcesos] = p;
@@ -48,6 +45,9 @@ public class Memory {
                     System.out.println("Hole Removed");
                 }
             }
+        }
+        if(!swapped){
+            System.out.println("Error SWAP In del procés "+p.nom);
         }
     }
 
@@ -80,6 +80,9 @@ public class Memory {
         int np = numProcessos();
         p5.text("Num Procesos Actius: "+np, 100, 620);
 
+        int nf = numForats();
+        p5.text("Num Forats: "+nf, 100, 660);
+
 
         for(int i=0; i<procesos.length; i++){
             if(procesos[i]!=null) {
@@ -103,6 +106,16 @@ public class Memory {
         int total = 0;
         for(int i=0; i<procesos.length; i++){
             if(procesos[i]!=null) {
+                total ++;
+            }
+        }
+        return total;
+    }
+
+    int numForats(){
+        int total = 0;
+        for(int i=0; i<holes.length; i++){
+            if(holes[i]!=null) {
                 total ++;
             }
         }

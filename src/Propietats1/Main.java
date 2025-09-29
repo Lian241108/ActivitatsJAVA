@@ -1,4 +1,4 @@
-package Propietats;
+package Propietats1;
 
 public class Main {
 
@@ -12,34 +12,34 @@ public class Main {
         numOwners = 0;
         numProps = 0;
 
-        House h1 = new House("H1", "Major 1", "Manacor", 3);
-        House h2 = new House("H2", "Principal 23", "Palma", 4);
+        House h1 = new House("H1", "Migjorn 2", "Vilafranca de Bonany", 3);
+        House h2 = new House("H2", "Sol 4", "Porreres", 4);
 
         h1.setPrice(3000);
         h2.setPrice(1500);
 
         h1.setSwimmingPool(true);
 
-        Boat b1 = new Boat("B1", "Moll 15", "Palma", 2.5f);
-        Boat b2 = new Boat("B2", "Moll 13", "Palma", 4.0f);
+        Boat b1 = new Boat("B1", "Moll 1", "S'Illot", 4.5f);
+        Boat b2 = new Boat("B2", "Moll 2", "S'Illot", 1.0f);
 
         b1.setPrice(300);
         b2.setPrice(2000);
 
-        Owner p1 = new Owner("Paco", "Major 1, Manacor");
-        Owner p2 = new Owner("Bel", "Principal 23, Palma");
+        Owner p1 = new Owner("Lian", "Migjorn 2, Vilafranca de Bonany");
+        Owner p2 = new Owner("Albert", "Sol4, Porreres");
 
         addOwner(p1);
         addOwner(p2);
 
-        addProp("Paco", h1);
-        addProp("Paco", b2);
+        addProp("Lian", h1);
+        addProp("Lian", b2);
 
-        addProp("Bel", b1);
-        addProp("Bel", h2);
+        addProp("Albert", b1);
+        addProp("albert", h2);
 
-        int numPalma = numPropsInCity(allOwners, "Palma");
-        System.out.printf("%d props in %s. \n", numPalma, "Palma");
+        int numPalma = numPropsInCity(allOwners, "Vilafranca de Bonany");
+        System.out.printf("%d props in %s. \n", numPalma, "Porreres");
 
         String name = ownerCheapestProp(allOwners);
         System.out.printf("Owner cheapest prop: %s. \n", name);
